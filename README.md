@@ -1,7 +1,8 @@
 # MasterMindz_Mallick-A_Chow-M_Tricarico-G
 Double-ended queue lab (aka deque)
 
-Explain 
+Explain
+
   -Your method selections.
   
   -Your rationale for choosing a (doubly-linked) node-based, array-based, or ArrayList-based architecture.
