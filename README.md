@@ -1,9 +1,10 @@
 # MasterMindz_Mallick-A_Chow-M_Tricarico-G
 Double-ended queue lab (aka deque)
 
-    Draft a prioritized list of deque methods you plan to implement.
-    You need not implement every method. (Which are most crucial? Which are most easily implemented?)
-     	
+Explain 
+-Your method selections.
+-Your rationale for choosing a (doubly-linked) node-based, array-based, or ArrayList-based architecture.
+
 pop()
 push(E e)
 remove()
