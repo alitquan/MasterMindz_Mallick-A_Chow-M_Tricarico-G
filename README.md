@@ -1,5 +1,6 @@
-# MasterMindz_Mallick-A_Chow-M_Tricarico-G
-Double-ended queue lab (aka deque)
+# Double-ended queue lab (aka deque)
+Team Name: MasterMindz
+Roster: Alitquan Mallick, Melanie Chow, Gian "Giant" Tricarico
 
 Explain
 
