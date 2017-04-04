@@ -1,6 +1,6 @@
 public class DQ <T> implements Deque<T>{
     /*
-      all of the methods have linear runtimes-- with 
+      all of the methods have constant runtimes-- with 
       the exception of toString which has a linear
       runtime
     */
