@@ -122,7 +122,7 @@ public class DQ <T> implements Deque<T>{
 
     // returns size of deque
     public int size() {
-	return _size();
+	return _size;
     }
 
     // overridden toString method to print contents of deque
