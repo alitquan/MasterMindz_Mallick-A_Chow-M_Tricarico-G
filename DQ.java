@@ -20,19 +20,6 @@ public class DQ <T> implements Deque<T>{
         this.addLast(x);
     }
 
-    //retrieves and removes the _front of the queue (first element); returns null if empty
-    public T poll() {
-	if (this.isEmpty()) {
-	    return null;
-	}
-	else {
-	    T retnode=_front.getCargo();
-	    _front=_front.getNext();
-	    _front.setPrev(null);
-	    _size--;
-	    return retnode;
-	}
-    }
 	    
 
     //same functionality as remove; return null if empty
@@ -63,18 +50,6 @@ public class DQ <T> implements Deque<T>{
 	}
     }
 	
-    //inserts into _end of queue
-    public void add(T x){
-	if ( isEmpty() ) {
-	    _front = _end = new DLLNode<T>(x,null,null );
-	}
-	else {
-	    _end.setNext(new DLLNode<T>(x,_end,null));
-	    _end = _end.getNext();
-	}
-	_size++;
-    }
-
     // inserts into _front of queue
     public void addFirst(T x){
 	if ( isEmpty() ) {
@@ -138,19 +113,90 @@ public class DQ <T> implements Deque<T>{
 	return retStr;
     }
     public static void main(String[] args){
-	Deque<String> DairyQueen=new DQ<String>();
-	DairyQueen.add("mango");
-	DairyQueen.add("strawberry");
-	DairyQueen.add("blitz");
-	DairyQueen.addFirst("luscious");
-	DairyQueen.addLast("soup");
-	System.out.println(DairyQueen);
-	System.out.println("peekFirst() == " + DairyQueen.peekFirst());
-	System.out.println("peekLast() == " + DairyQueen.peekLast());
-	System.out.println("pollFirst() == " + DairyQueen.pollFirst());
-	System.out.println(DairyQueen);
-       	System.out.println("pollLast() == " + DairyQueen.pollLast());
-	System.out.println(DairyQueen);
+        
+	//testing for add, assuming toString is correct & add is implemented to insert at the _end
+	Deque <String> test = new DQ <String>();
+	Deque <String> experiment = new DQ <String> ();
+	test.addLast("1");
+	test.addLast("2");
+	test.addLast("3");
+	System.out.println("should read 1<---2<---3 or 3--->2--->1, wherein 1 is the _front");
+        System.out.println("your implementation: " + test);
+	
+	// new DQ 
+	System.out.println("\nTesting peekLast() ");
+	System.out.println("Adding 'hi'");
+	experiment.addLast("hi");
+	if (experiment.peekLast()== "hi") 
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+	System.out.println("Adding 'b'");
+	experiment.addLast("b");
+	if (experiment.peekLast() == "b") 
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+	System.out.println("Adding 'whatsGood'");
+	experiment.addLast("whatsGood");
+	if (experiment.peekLast() == "whatsGood") 
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+	System.out.println("\nTesting peekFirst:");
+	if (experiment.peekFirst() == "hi")
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+
+	// testing for size()
+	System.out.println("Testing for size()");
+	if (experiment.size() == 3)
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+
+	// testing for addFirst()
+	System.out.println ("\nTesting for addFirst()");
+	experiment.addFirst("zimbabwe");
+	if (experiment.peekFirst() == "zimbabwe")
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+
+	//testing for addLast()
+	System.out.println ("\nTesting for addLast()");
+	experiment.addLast("zambia");
+	if (experiment.peekLast() == "zambia")
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+
+	// pollFirst(), assuming that they are the same 
+	System.out.println("\nTesting pollFirst()");
+	if (experiment.pollFirst() == "zimbabwe")
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+
+	// pollLast()
+	System.out.println("\nTesting pollLast()");
+	if (experiment.pollLast() == "zambia")
+	    System.out.println ("success");
+	else
+	    System.out.println ("failed");
+
+	System.out.println("\nShould return null...");
+        System.out.println(experiment.pollFirst());
+	System.out.println(experiment.pollFirst());
+	System.out.println(experiment.pollFirst());
+	System.out.println(experiment.pollFirst());
+	System.out.println(experiment.pollFirst());
+
+	//adding more to experiment
+	System.out.println ("\nAdding more to experiment....");
+	experiment.addFirst("internet");
+	experiment.addFirst("power");
     }
 	
 	

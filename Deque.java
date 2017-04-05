@@ -4,12 +4,10 @@ public interface Deque<T>{
     public void push(T x);
 
     //removing
-    public T poll();
     public T pollFirst();
     public T pollLast();
 
     //adding
-    public void add(T x);
     public void addFirst(T x);
     public void addLast(T x);
     
