@@ -17,21 +17,22 @@ had originally intended to include the remove methods rather than the poll metho
 null when the removal was unsuccessful rather than throwing an exception, so we changed the method signatures to show that they were 
 actually poll() as described in the *Deque* interface.
 
-Methods included:
+__Methods included:
 
-* 'pop()': retrieves and removes end of the deque
-* 'push(E e)': adds to the end of the deque
-* 'pollFirst()': removes from front of the deque; prints null if empty
-* 'pollLast()': removes from end of the deque; prints null if emptu
-* 'peekFirst()': returns element at the front of the deque
-* 'peekLast()': returns element at the end of the deque
-* 'addFirst(E e)': adds to the front of the deque
-* 'addLast(E e)': adds to the end of the deque
-* 'size()': returns number of elements in deue
-* 'toString()': over-ridden method to give an illustration of deque
-We prioritized pollFirst() and pollLast() over removeFirst and removeLast() because we wanted to avoid the throwing of errors while the 
-code was running, and poll's null return aspect seemed to facilitate this avoidance. We did not bother using any of the 'offer()' 
-variations because our doubl-linked list does not need a capacity.
+* `pop()`: retrieves and removes end of the deque
+* `push(E e)`: adds to the end of the deque
+* `pollFirst()`: removes from front of the deque; prints null if empty
+* `pollLast()`: removes from end of the deque; prints null if emptu
+* `peekFirst()`: returns element at the front of the deque
+* `peekLast()`: returns element at the end of the deque
+* `addFirst(E e)`: adds to the front of the deque
+* `addLast(E e)`: adds to the end of the deque
+* `size()`: returns number of elements in deue
+* `toString()`: over-ridden method to give an illustration of deque
+
+We prioritized `pollFirst()` and `pollLast()` over `removeFirst()` and `removeLast()` because we wanted to avoid the throwing of errors 
+while the code was running, and poll's null return aspect seemed to facilitate this avoidance. We did not bother using any of the 
+`offer()` variations because our doubl-linked list does not need a capacity.
 
 #### Changes made due to code review:
 * removal of the List.java and LList.java, both of which were unnecessarily on the repo
