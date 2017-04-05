@@ -60,7 +60,6 @@ public class DequeTester {
 	    System.out.println ("failed");
 
 	//testing for addLast()
-	// testing for addFirst()
 	System.out.println ("\nTesting for addLast()");
 	experiment.addLast("zambia");
 	if (experiment.peekLast() == "zambia")
