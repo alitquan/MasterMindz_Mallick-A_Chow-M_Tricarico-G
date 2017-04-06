@@ -1,6 +1,7 @@
 public class DQ <T> implements Deque<T>{
     /*
-      all of the methods have constant runtimes-- with 
+      all of the methods have constant runtimes, pince
+      no transversing ever takes place--- with 
       the exception of toString which has a linear
       runtime
     */
@@ -13,37 +14,44 @@ public class DQ <T> implements Deque<T>{
     }
     
     //pop & push: STACK PROPERTIES- FILO
+
+    // removes from the _end of the deque
     public T pop(){
 	return this.pollLast();
     }
-    public void push(T x){
-        this.addLast(x);
+    // adds to the end of the deque
+    public void push( T x ){
+        this.addLast( x );
     }
-
-	    
-
+    
     //same functionality as remove; return null if empty
-    public T pollFirst(){
-	if (this.isEmpty()) {
+    public T pollFirst() {
+	if ( this.isEmpty() ) {
 	    return null;
 	}
 	else {
-	    T retnode=_front.getCargo();
-	    _front=_front.getNext();
-	    _front.setPrev(null);
+	    // temporary node set to hold cargo of designated node
+	    T retVal= _front.getCargo();
+
+	    // front set to the next node and prevNode set to null, eliminating the older _front
+	    _front= _front.getNext();
+	    _front.setPrev( null );
 	    _size--;
-	    return retnode;
+	    return retVal;
 	}
     }
 
     //retrieves and removes the _end of the queue (last element); returns null if empty
-    public T pollLast(){
-	if (this.isEmpty()) {
+    public T pollLast() {
+	if ( this.isEmpty() ) {
 	    return null;
 	}
 	else{
-	    T retnode=_end.getCargo();
-	    _end=_end.getPrev();
+	    // temporary node set to hold cargo of designated node
+	    T retVal= _end.getCargo();
+
+	    // end set to the previous node and nextNode set to null, eliminating the older _end
+	    _end= _end.getPrev();
 	    _end.setNext(null);
 	    _size--;
 	    return retnode;
@@ -51,38 +59,42 @@ public class DQ <T> implements Deque<T>{
     }
 	
     // inserts into _front of queue
-    public void addFirst(T x){
+    public void addFirst( T x ){
+	// if list is empty, _front and _end are set to the same node
 	if ( isEmpty() ) {
-	    _front = _end = new DLLNode<T>(x,null,null );
+	    _front = _end = new DLLNode<T>( x, null, null );
 	}
-	else{
-	DLLNode<T> holder=new DLLNode<T>(x,null,_front);
-	_front=holder;
+	// otherwise, new node with cargo of x placed at the _front 
+	else {
+	    DLLNode<T> holder=new DLLNode<T>( x, null, _front );
+	    _front=holder;
 	}
 	_size++;
     }
 
     // same functionality as add
-    public void addLast(T x){
+    public void addLast(T x) {
+	// if list is empty, _front and _end are set to the same node
 	if ( isEmpty() ) {
-	    _front = _end = new DLLNode<T>(x,null, null );
+	    _front = _end = new DLLNode<T>( x, null, null );
 	}
+	// otherwise, new node with cargo of x placed at the _front
 	else{
-	     _end.setNext(new DLLNode<T>(x,_end,null));
+	     _end.setNext(new DLLNode<T>( x, _end, null));
 	    _end = _end.getNext();
 	}
 	_size++;
     }
     
-    //returns cargo of _front of deque
-    public T peekFirst(){
-	if (this.isEmpty()) {
+    //returns cargo of _front of deque; returns  null if deque is empty
+    public T peekFirst() {
+	if ( this.isEmpty() ) {
 	    return null;
 	}
 	return _front.getCargo();
     }
 
-    //returns cargo of _back of deque
+    //returns cargo of _back of deque; returns null if deque is empty
     public T peekLast(){
 	if (this.isEmpty()) {
 	    return null;
@@ -101,18 +113,18 @@ public class DQ <T> implements Deque<T>{
     }
 
     // overridden toString method to print contents of deque
-    public String toString(){
-	String retStr="FRONT----";
-	DLLNode<T> trav=_front;
-	while (trav!=null){
-	    retStr+=trav.getCargo()+"<----";
-	    trav=trav.getNext();
+    public String toString() {
+	String retStr = "FRONT----";
+	DLLNode<T> trav = _front;
+	while ( trav != null ){
+	    retStr +=trav.getCargo()+ "<----";
+	    trav =trav.getNext();
 	}
-	retStr= retStr.substring(0,retStr.length()-5);
-	retStr+="----END";
+	retStr = retStr.substring( 0, retStr.length() - 5);
+	retStr += "----END";
 	return retStr;
     }
-    public static void main(String[] args){
+    public static void main ( String[] args ) {
         
 	//testing for add, assuming toString is correct & add is implemented to insert at the _end
 	Deque <String> test = new DQ <String>();
