@@ -54,7 +54,7 @@ public class DQ <T> implements Deque<T>{
 	    _end= _end.getPrev();
 	    _end.setNext(null);
 	    _size--;
-	    return retnode;
+	    return retVal;
 	}
     }
 	
