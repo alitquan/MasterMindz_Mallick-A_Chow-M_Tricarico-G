@@ -13,12 +13,12 @@ public class DequeTester {
 	System.out.println(tester); //should become "hello there fair princess"    
 	
 	//testing removeFirst
-	/*
+	
 	System.out.println(tester.removeFirst());
 	System.out.println(tester.removeFirst());
 	System.out.println(tester.removeFirst());
 	System.out.println(tester.removeFirst());
-	*/
+	
 	//testing addLast
 	
 	tester.addLast("hello");
@@ -27,12 +27,12 @@ public class DequeTester {
 	tester.addLast("prince");
 	System.out.println(tester); //should become "hello there fair prince"    
 	//testing removeLast
-	/*
+	
 	System.out.println(tester.removeLast());
 	System.out.println(tester.removeLast());
 	System.out.println(tester.removeLast());
 	System.out.println(tester.removeLast());
-	*/
+	
 	//testing peekFirst and peekLast
 
 	tester.addLast("i'm first");
