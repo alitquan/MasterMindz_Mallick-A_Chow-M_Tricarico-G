@@ -1,6 +1,8 @@
+import java.util.NoSuchElementException;
+
 public class DQ <T> implements Deque<T>{
     /*
-      all of the methods have constant runtimes, pince
+      all of the methods have constant runtimes, since
       no transversing ever takes place--- with 
       the exception of toString which has a linear
       runtime
@@ -30,7 +32,10 @@ public class DQ <T> implements Deque<T>{
 	    return null;
 	}
 	else if ( size() == 1 ) {
+	    
+	    // temporary node set to hold cargo of designated node
 	    T retVal = _front.getCargo();
+	    
 	    _front = _end = null;
 	    _size--;
 	    return retVal;
@@ -52,6 +57,15 @@ public class DQ <T> implements Deque<T>{
 	if ( this.isEmpty() ) {
 	    return null;
 	}
+	else if ( size() == 1 ) {
+	    
+	    // temporary node set to hold cargo of designated node
+	    T retVal = _end.getCargo();
+	    
+	    _front = _end = null;
+	    _size--;
+	    return retVal;
+	}
 	else{
 	    // temporary node set to hold cargo of designated node
 	    T retVal= _end.getCargo();
@@ -63,33 +77,101 @@ public class DQ <T> implements Deque<T>{
 	    return retVal;
 	}
     }
-	
+
+    public T poll()
+    {
+	return pollFirst();
+    }
+
+    public T removeFirst()
+    {
+	if ( this.isEmpty() ) {
+	    throw new NoSuchElementException("This deque is already empty.");
+	}
+	else if ( size() == 1 ) {
+	    
+	    // temporary node set to hold cargo of designated node
+	    T retVal = _front.getCargo();
+	    
+	    _front = _end = null;
+	    _size--;
+	    return retVal;
+	}
+	else {
+	    // temporary node set to hold cargo of designated node
+	    T retVal= _front.getCargo();
+
+	    // front set to the next node and prevNode set to null, eliminating the older _front
+	    _front= _front.getNext();
+	    _front.setPrev( null );
+	    _size--;
+	    return retVal;
+	}
+    }
+
+    public T removeLast()
+    {
+	if ( this.isEmpty() ) {
+	    throw new NoSuchElementException("This deque is already empty.");
+	}
+	else if ( size() == 1 ) {
+	    
+	    // temporary node set to hold cargo of designated node
+	    T retVal = _end.getCargo();
+	    
+	    _front = _end = null;
+	    _size--;
+	    return retVal;
+	}
+	else{
+	    // temporary node set to hold cargo of designated node
+	    T retVal= _end.getCargo();
+
+	    // end set to the previous node and nextNode set to null, eliminating the older _end
+	    _end= _end.getPrev();
+	    _end.setNext(null);
+	    _size--;
+	    return retVal;
+	}
+    }
+
+    public T remove()
+    {
+	return removeFirst();
+    }
+    
     // inserts into _front of queue
-    public void addFirst( T x ){
+    public void addFirst( T newVal ){
 	// if list is empty, _front and _end are set to the same node
 	if ( isEmpty() ) {
-	    _front = _end = new DLLNode<T>( x, null, null );
+	    _front = _end = new DLLNode<T>( newVal, null, null );
 	}
-	// otherwise, new node with cargo of x placed at the _front 
+	// otherwise, new node with cargo of newVal placed at the _front 
 	else {
-	    DLLNode<T> holder=new DLLNode<T>( x, null, _front );
+	    DLLNode<T> holder=new DLLNode<T>( newVal, null, _front );
 	    _front=holder;
 	}
 	_size++;
     }
 
     // same functionality as add
-    public void addLast(T x) {
+    public void addLast(T newVal) {
 	// if list is empty, _front and _end are set to the same node
 	if ( isEmpty() ) {
-	    _front = _end = new DLLNode<T>( x, null, null );
+	    _front = _end = new DLLNode<T>( newVal, null, null );
 	}
-	// otherwise, new node with cargo of x placed at the _front
+	// otherwise, new node with cargo of newVal placed at the _end
 	else{
-	     _end.setNext(new DLLNode<T>( x, _end, null));
+	     _end.setNext(new DLLNode<T>( newVal, _end, null));
 	    _end = _end.getNext();
 	}
 	_size++;
+    }
+
+    public boolean add( T newVal )
+    {
+	addLast(newVal);
+	return true;
     }
     
     //returns cargo of _front of deque; returns  null if deque is empty
@@ -100,7 +182,7 @@ public class DQ <T> implements Deque<T>{
 	return _front.getCargo();
     }
 
-    //returns cargo of _back of deque; returns null if deque is empty
+    //returns cargo of _end of deque; returns null if deque is empty
     public T peekLast(){
 	if (this.isEmpty()) {
 	    return null;
@@ -215,6 +297,12 @@ public class DQ <T> implements Deque<T>{
 	System.out.println ("\nAdding more to experiment....");
 	experiment.addFirst("internet");
 	experiment.addFirst("power");
+
+	System.out.println("\nTesting remove()");
+	System.out.println(experiment.remove());
+	System.out.println(experiment.remove());
+	System.out.println("\nShould throw an exception...");
+	experiment.remove();
     }
 	
 	
