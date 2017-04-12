@@ -17,17 +17,23 @@ public class DQ <T> implements Deque<T>{
 
     // removes from the _end of the deque
     public T pop(){
-	return this.pollLast();
+	return removeFirst();
     }
     // adds to the end of the deque
     public void push( T x ){
-        this.addLast( x );
+        addFirst( x );
     }
     
     //same functionality as remove; return null if empty
     public T pollFirst() {
 	if ( this.isEmpty() ) {
 	    return null;
+	}
+	else if ( size() == 1 ) {
+	    T retVal = _front.getCargo();
+	    _front = _end = null;
+	    _size--;
+	    return retVal;
 	}
 	else {
 	    // temporary node set to hold cargo of designated node
