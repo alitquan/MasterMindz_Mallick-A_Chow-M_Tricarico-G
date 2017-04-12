@@ -4,10 +4,10 @@
 ## Roster: Alitquan Mallick, Melanie Chow, Gian "Giant" Tricarico
 
 ### Underlying Container: Doubly-Linked List
-We decided to use a doubly-linked list as the underlying container. We did not choose an arrayList as a container because then we would
-have to keep in mind the capacity of the container and runtimes would be affected by the resizing of the arrayList. Another big factor was 
-the poll() and remove() methods, which involved the removal of an element. In an arrayList, this removal would require a linear runtime due to the fact 
-that every element of the arrayList would have to be shifted down. With a doubly-linked list, it would have constant runtime because
+We decided to use a doubly-linked list as the underlying container. We did not choose an ArrayList as a container because then we would
+have to keep in mind the capacity of the container and runtimes would be affected by the resizing of the ArrayList. Another big factor was 
+the poll() and remove() methods, which involved the removal of an element. In an ArrayList, this removal would require a linear runtime due to the fact 
+that every element of the ArrayList would have to be shifted down. With a doubly-linked list, it would have constant runtime because
 the only step needed would be to set the front or the back to the nextNode or the prevNode. We chose a doubly-linked list rather than 
 a single one so that the deque would not require a traversal of the list
 in order to add or remove at the end.
