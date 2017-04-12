@@ -190,6 +190,11 @@ public class DQ <T> implements Deque<T>{
 	return _end.getCargo();
     }
 
+    public T peek()
+    {
+	return peekFirst();
+    }
+
     // returns true if deque is empty, false otherwise
     public boolean isEmpty() {
 	return (_size == 0); 

@@ -14,10 +14,12 @@ public interface Deque<T>{
     //adding
     public void addFirst(T x);
     public void addLast(T x);
+    public boolean add(T x);
     
     //peek
     public T peekFirst();
     public T peekLast();
+    public T peek();
 
     public boolean isEmpty();
     public int size();
